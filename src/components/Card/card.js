@@ -11,7 +11,7 @@ const Card = ({ name, phone, email, image, favorite }) => {
         setIsFavorite(!isFavorite);
     }
 
-    return <div className="card">
+    return <div data-testid="cardComponent" className="card">
         <div className="card-header">
             <img src={image.url} alt={image.alt} className="card-img"/>
             <button className="heart" onClick={toggleFavorite}>
@@ -23,7 +23,7 @@ const Card = ({ name, phone, email, image, favorite }) => {
             <p>{phone}</p>
             <p>{email}</p>
         </div>
-    </div>
+    </div >
 }
 
 export default Card;
