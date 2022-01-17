@@ -6,26 +6,41 @@ import axios from "axios";
 
 const Pets = () => {
 
-    const [cats, setcats] = useState([])
-    
+    const [cats, setcats] = useState([]);
+    const [filteredCats,setFilteredCats]=useState([])
+    const [filters, setFilters] = useState({
+        gender:"any"
+    })
+
+    // console.log(filters);
+
     const fetchCats = async () => {
         const response = await axios.get("http://localhost:4000/cats");
         setcats(response.data);
+        setFilteredCats(response.data);
     }
     // initial render of component
     useEffect(() => {
         fetchCats()
     }, [])
     
-    console.log(cats);
+    useEffect(() => {
+        let catsFiltered = [...cats];
+        if (filters.gender !== "any") {
+            catsFiltered = catsFiltered.filter(cat => cat.gender === filters.gender)
+        }
+        setFilteredCats(catsFiltered)
+    }, [filters])
+
+    // console.log(cats);
 
     return (
         <div className="container">
     
             <div className="app-container">
-                <Filter />
+                <Filter filters={filters} setFilters={setFilters}/>
                 
-                <Cards cats={cats} />
+                <Cards cats={filteredCats} />
             </div>
         </div>
     );
