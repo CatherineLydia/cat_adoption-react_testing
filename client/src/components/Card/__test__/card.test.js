@@ -8,7 +8,9 @@ const cardProps = {
     phone:"111-111-1111",
     email:"laith@gmail.com",
     image:{ url: "https://unsplash.com/photos/E9kVmtiqqGE", alt: "cute cat image" },
-    favorite:false
+    favorite: false,
+    updateFavourite: () => { },
+    index:1,
 }
 
 describe("Card", () => {

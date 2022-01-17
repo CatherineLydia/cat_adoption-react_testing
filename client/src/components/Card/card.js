@@ -3,11 +3,12 @@ import heartFilled from "../../svgs/heartFilled.svg";
 import heartOutlined from "../../svgs/heartOutlined.svg";
 import "./card.css";
 
-const Card = ({ name, phone, email, image, favorite }) => {
+const Card = ({ name, phone, email, image, favorite ,index, updateFavourite}) => {
 
     const [isFavorite, setIsFavorite] = useState(favorite);
     
     const toggleFavorite = () => {
+        updateFavourite(index, !isFavorite);
         setIsFavorite(!isFavorite);
     }
 
