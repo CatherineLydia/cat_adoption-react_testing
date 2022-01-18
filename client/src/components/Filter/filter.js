@@ -1,4 +1,6 @@
-const Filter = ({filters,setFilters}) => <div className="pet-filter-container">
+import "./filter.css"
+
+const Filter = ({ filters, setFilters }) => <div className="pet-filter-container">
     <div className="filter-container">
         <label htmlFor="favourite">Favourite</label>
         <select name="favourite" id="favourite" className="form-selct" onChange={(e) => {
